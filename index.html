@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FANG — Darkroom Collective &amp; Archive</title>
+    <meta
+      name="description"
+      content="Darkroom collective roster, silver-gelatin portrait gallery, and interactive ambient archive."
+    />
+    <meta property="og:title" content="FANG — Darkroom Collective &amp; Archive" />
+    <meta
+      property="og:description"
+      content="Darkroom collective roster, silver-gelatin portrait gallery, and interactive ambient archive."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <link rel="preconnect" href="https://i.ytimg.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <!-- Site-Matched Darkroom Loading Curtain -->
+    <div
+      id="loading-screen"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading FANG"
+      class="loading-screen"
+    >
+      <div aria-hidden="true" class="crt-scanlines loading-scanlines"></div>
+      <div aria-hidden="true" class="darkroom-vignette loading-vignette"></div>
+
+      <div class="loading-inner">
+        <div id="intro-image-wrap" class="intro-image-wrap"></div>
+
+        <svg viewBox="0 0 420 150" aria-hidden="true" class="loading-wordmark">
+          <defs>
+            <linearGradient id="loaderBloodFill" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#8a0909" />
+              <stop offset="50%" stop-color="#630404" />
+              <stop offset="100%" stop-color="#260101" />
+            </linearGradient>
+            <linearGradient id="loaderBloodEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#b91c1c" stop-opacity="0.7" />
+              <stop offset="100%" stop-color="#450a0a" stop-opacity="0.95" />
+            </linearGradient>
+            <radialGradient id="loaderHalo" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#991b1b" stop-opacity="0.34" />
+              <stop offset="100%" stop-color="#050404" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+
+          <ellipse cx="210" cy="76" rx="180" ry="76" fill="url(#loaderHalo)" />
+
+          <text
+            x="210"
+            y="118"
+            text-anchor="middle"
+            fill="url(#loaderBloodFill)"
+            stroke="url(#loaderBloodEdge)"
+            stroke-width="1"
+            class="wordmark-svg-text wordmark-svg-text--loader"
+          >
+            FANG
+          </text>
+
+          <g class="animate-blood-drip" fill="#b91c1c">
+            <path d="M126 126 C126 126, 123 137, 126 139 C129 137, 126 126, 126 126 Z" opacity="0.9" />
+            <path d="M242 128 C242 128, 239 138, 242 140 C245 138, 242 128, 242 128 Z" opacity="0.92" />
+            <path d="M298 122 C298 122, 296 130, 298 132 C300 130, 298 122, 298 122 Z" opacity="0.82" />
+          </g>
+        </svg>
+
+        <div class="loading-progress-wrap">
+          <div class="loading-track">
+            <div id="loader-bar" class="loading-bar"></div>
+          </div>
+          <div class="loading-meta">
+            <span>Loading</span>
+            <span id="loader-percent" class="tabular-nums">0%</span>
+          </div>
+        </div>
+
+        <button id="loader-skip" type="button" class="loading-skip-btn">Skip</button>
+      </div>
+    </div>
+
+    <!-- Fixed Stairwell Silhouette + CRT Scanlines + Vignette -->
+    <div aria-hidden="true" class="backdrop-atmosphere">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" class="backdrop-svg">
+        <defs>
+          <linearGradient id="stairWall" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#040404" />
+            <stop offset="55%" stop-color="#1b1a1a" />
+            <stop offset="100%" stop-color="#080808" />
+          </linearGradient>
+          <linearGradient id="banisterLight" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#2f2d2d" />
+            <stop offset="100%" stop-color="#0a0a0a" />
+          </linearGradient>
+        </defs>
+        <rect width="1440" height="900" fill="url(#stairWall)" />
+        <g opacity="0.65">
+          <polygon points="480,0 1440,390 1440,435 420,0" fill="url(#banisterLight)" />
+          <polygon points="560,0 1440,355 1440,368 535,0" fill="#2c2b2b" />
+          <rect x="620" y="45" width="14" height="540" fill="#141313" />
+          <rect x="692" y="74" width="14" height="540" fill="#141313" />
+          <rect x="764" y="103" width="14" height="540" fill="#141313" />
+          <rect x="836" y="132" width="14" height="540" fill="#141313" />
+          <rect x="908" y="161" width="14" height="540" fill="#141313" />
+          <rect x="980" y="190" width="14" height="540" fill="#141313" />
+          <rect x="1052" y="219" width="14" height="540" fill="#141313" />
+          <rect x="1124" y="248" width="14" height="540" fill="#141313" />
+          <rect x="1196" y="277" width="14" height="540" fill="#141313" />
+          <rect x="1268" y="306" width="14" height="540" fill="#141313" />
+          <rect x="1340" y="335" width="14" height="540" fill="#141313" />
+          <rect x="1412" y="364" width="14" height="540" fill="#141313" />
+        </g>
+        <polygon points="1040,560 1440,620 1440,900 840,900" fill="#0d0d0d" />
+        <ellipse cx="1160" cy="780" rx="180" ry="140" fill="#171616" opacity="0.7" />
+        <ellipse cx="320" cy="540" rx="260" ry="300" fill="#111010" opacity="0.5" />
+      </svg>
+      <div class="crt-scanlines backdrop-scanlines"></div>
+      <div class="darkroom-vignette backdrop-vignette"></div>
+    </div>
+
+    <!-- Main Page Shell -->
+    <div id="top" class="page-shell">
+      <header class="top-nav">
+        <div class="top-nav-inner">
+          <a href="#top" class="brand-link">FANG</a>
+
+          <nav aria-label="Primary navigation" class="primary-nav">
+            <a href="#roster" class="nav-link">Roster</a>
+            <a href="#archive" class="nav-link">Archive</a>
+            <a href="#soundscape" class="nav-link">Soundscape</a>
+            <a href="#manifesto" class="nav-link">Manifesto</a>
+          </nav>
+
+          <div class="nav-action-wrap">
+            <a href="#archive" class="nav-cta">Explore Archive</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <!-- Hero Wordmark -->
+        <div class="hero-wordmark">
+          <h1 class="sr-only">FANG</h1>
+          <svg viewBox="0 0 640 215" role="img" aria-label="FANG" class="hero-wordmark-svg">
+            <defs>
+              <linearGradient id="bloodFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#8a0909" />
+                <stop offset="45%" stop-color="#630404" />
+                <stop offset="85%" stop-color="#3c0202" />
+                <stop offset="100%" stop-color="#210101" />
+              </linearGradient>
+              <linearGradient id="bloodEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#b91c1c" stop-opacity="0.65" />
+                <stop offset="100%" stop-color="#450a0a" stop-opacity="0.9" />
+              </linearGradient>
+              <radialGradient id="crimsonHalo" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#991b1b" stop-opacity="0.28" />
+                <stop offset="65%" stop-color="#450a0a" stop-opacity="0.08" />
+                <stop offset="100%" stop-color="#050404" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+
+            <ellipse cx="320" cy="108" rx="260" ry="110" fill="url(#crimsonHalo)" />
+
+            <text
+              x="320"
+              y="164"
+              text-anchor="middle"
+              fill="url(#bloodFill)"
+              stroke="url(#bloodEdge)"
+              stroke-width="1.2"
+              class="wordmark-svg-text wordmark-svg-text--hero"
+            >
+              FANG
+            </text>
+
+            <g class="animate-blood-drip" fill="#b91c1c">
+              <path d="M188 176 C188 176, 184 190, 188 193 C192 190, 188 176, 188 176 Z" opacity="0.88" />
+              <path d="M254 170 C254 170, 251 180, 254 182 C257 180, 254 170, 254 170 Z" opacity="0.78" />
+              <path d="M362 178 C362 178, 358 191, 362 194 C366 191, 362 178, 362 178 Z" opacity="0.9" />
+              <path d="M446 168 C446 168, 443 179, 446 181 C449 179, 446 168, 446 168 Z" opacity="0.82" />
+            </g>
+
+            <g fill="#dc2626" opacity="0.55">
+              <circle cx="152" cy="128" r="1.5" />
+              <circle cx="212" cy="186" r="1.4" />
+              <circle cx="298" cy="172" r="1.2" />
+              <circle cx="412" cy="184" r="1.5" />
+              <circle cx="478" cy="134" r="1.2" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Roster Section with Central Dealer Deck -->
+        <section id="roster" aria-label="Collective Roster" class="roster-section">
+          <div id="dealer-deck" aria-hidden="true" class="dealer-deck">
+            <div class="dealer-deck-stack">
+              <div class="dealer-deck-layer dealer-deck-layer--back"></div>
+              <div class="dealer-deck-layer dealer-deck-layer--mid"></div>
+              <div class="dealer-deck-layer dealer-deck-layer--top">
+                <div class="dealer-deck-corners">
+                  <span>♦</span>
+                  <span>♦</span>
+                </div>
+                <span class="dealer-deck-title">FANG</span>
+                <div class="dealer-deck-corners">
+                  <span>♦</span>
+                  <span>♦</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="roster-grid" class="roster-fan"></div>
+
+          <div id="fan-controls" class="fan-controls">
+            <div class="fan-controls-row">
+              <button
+                id="fan-prev-btn"
+                type="button"
+                aria-label="Pick previous card"
+                class="fan-step-btn"
+              >
+                ‹
+              </button>
+              <div class="fan-status-readout">
+                <span id="fan-counter" class="fan-counter tabular-nums">04 / 07</span>
+                <span class="fan-sep" aria-hidden="true">·</span>
+                <span id="fan-active-name" class="fan-active-name">conv</span>
+              </div>
+              <button
+                id="fan-next-btn"
+                type="button"
+                aria-label="Pick next card"
+                class="fan-step-btn"
+              >
+                ›
+              </button>
+            </div>
+
+            <div id="fan-pips" class="fan-pips" role="tablist" aria-label="Roster plates"></div>
+
+            <div class="fan-timer-track" aria-hidden="true">
+              <div id="fan-timer-fill" class="fan-timer-fill"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Archive, Soundscape & Collective Notes -->
+        <div class="sections-stack">
+          <section id="archive" aria-labelledby="archive-heading" class="scroll-section">
+            <div class="section-header">
+              <h2 id="archive-heading" class="section-title">01. Selected Archive</h2>
+              <p id="archive-count" class="section-subtitle tabular-nums">
+                7 Cataloged Editions · Click any row to inspect plate
+              </p>
+            </div>
+
+            <div class="archive-table-wrap">
+              <table class="archive-table">
+                <thead>
+                  <tr>
+                    <th>Catalog</th>
+                    <th>Title</th>
+                    <th>Member</th>
+                    <th class="col-medium">Medium</th>
+                    <th class="text-right">Year</th>
+                    <th class="text-right">Length</th>
+                  </tr>
+                </thead>
+                <tbody id="archive-tbody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="soundscape" aria-labelledby="soundscape-heading" class="scroll-section">
+            <div class="section-header section-header--soundscape">
+              <div>
+                <h2 id="soundscape-heading" class="section-title">02. Darkroom Soundscape</h2>
+                <p class="soundscape-desc">
+                  Real-time Web Audio synthesizer layers for gallery listening.
+                </p>
+              </div>
+
+              <div class="soundscape-controls">
+                <label class="volume-control">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon-sm volume-icon"
+                    aria-hidden="true"
+                  >
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                  </svg>
+                  <span class="sr-only">Master ambient volume</span>
+                  <input
+                    id="soundscape-volume"
+                    type="range"
+                    min="0"
+                    max="0.8"
+                    step="0.02"
+                    value="0.35"
+                    class="darkroom-slider"
+                  />
+                </label>
+
+                <button id="mute-room-btn" type="button" class="mute-room-btn is-hidden">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon-xs icon-crimson"
+                    aria-hidden="true"
+                  >
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                    <line x1="22" y1="9" x2="16" y2="15" />
+                    <line x1="16" y1="9" x2="22" y2="15" />
+                  </svg>
+                  <span>Mute Room</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="soundscape-grid" class="soundscape-grid"></div>
+          </section>
+
+          <section id="manifesto" aria-labelledby="manifesto-heading" class="scroll-section">
+            <div class="section-header">
+              <h2 id="manifesto-heading" class="section-title">03. Collective Notes</h2>
+            </div>
+
+            <div class="manifesto-box">
+              <p class="manifesto-lead">
+                Fang operates as a closed nocturnal syndicate and black-ledger vault shared across
+                seven extorters, blackmailers, and crypto scammers. Every dossier is extracted in
+                the dark, stripped to raw leverage, and sealed behind encrypted cold storage.
+              </p>
+              <div class="manifesto-side">
+                <p>
+                  Nothing in the vault is scrubbed or forgiven. Drained wallets, compromised
+                  archives, doxxed trails, and dead-man switches remain locked inside the index
+                  until every debt clears in full.
+                </p>
+                <p class="manifesto-contact">
+                  Private settlements &amp; dead-drop routing · vault@fang.collective
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <span>© 2026 FANG COLLECTIVE</span>
+          <div class="footer-links">
+            <button id="replay-intro-btn" type="button" class="footer-btn">Replay Intro</button>
+            <a href="#top" class="footer-link">Back to Top</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Member Dossier Lightbox Modal -->
+    <div
+      id="member-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      class="modal-backdrop is-hidden"
+    >
+      <div id="modal-dialog" tabindex="-1" class="modal-dialog">
+        <div class="modal-header">
+          <div class="modal-header-left tabular-nums">
+            <span id="modal-plate-code" class="modal-plate-code">PLATE 01</span>
+            <span aria-hidden="true">/</span>
+            <span id="modal-counter">01 of 07</span>
+          </div>
+
+          <div class="modal-header-actions">
+            <span class="modal-nav-hint">← / → Navigate</span>
+            <button
+              id="modal-prev-btn"
+              type="button"
+              aria-label="Previous member (Left arrow)"
+              class="modal-icon-btn"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon-sm"
+                aria-hidden="true"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              id="modal-next-btn"
+              type="button"
+              aria-label="Next member (Right arrow)"
+              class="modal-icon-btn"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon-sm"
+                aria-hidden="true"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+            <button
+              id="modal-close-btn"
+              type="button"
+              aria-label="Close dossier (Escape)"
+              class="modal-icon-btn modal-icon-btn--close"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon-sm"
+                aria-hidden="true"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="modal-body" class="modal-body">
+          <div class="modal-media-col">
+            <div class="modal-portrait-shell">
+              <div id="modal-media-box" class="modal-portrait-frame"></div>
+            </div>
+          </div>
+
+          <div class="modal-info-col">
+            <div>
+              <div id="modal-meta-line" class="modal-meta-line"></div>
+              <h2 id="modal-title" class="modal-member-name"></h2>
+              <p id="modal-statement" class="modal-statement"></p>
+
+              <div id="modal-presence" class="modal-presence-wrap"></div>
+
+              <dl class="modal-specs">
+                <div class="modal-spec-row">
+                  <dt>Primary Medium</dt>
+                  <dd id="modal-medium"></dd>
+                </div>
+                <div class="modal-spec-row">
+                  <dt>Archive Handle</dt>
+                  <dd>
+                    <button id="modal-handle-btn" type="button" class="handle-copy-btn">
+                      <span id="modal-handle-text"></span>
+                      <span id="modal-handle-icon"></span>
+                    </button>
+                  </dd>
+                </div>
+                <div class="modal-spec-row">
+                  <dt>Tuning Reference</dt>
+                  <dd id="modal-tuning" class="tabular-nums"></dd>
+                </div>
+              </dl>
+
+              <div class="audio-study-card">
+                <div class="audio-study-top">
+                  <div class="audio-study-meta">
+                    <p class="audio-study-label">Audio Study</p>
+                    <p id="modal-track-title" class="audio-study-title"></p>
+                  </div>
+
+                  <button id="modal-play-btn" type="button" class="audio-play-btn"></button>
+                </div>
+
+                <div class="audio-study-bar-row">
+                  <div class="audio-progress-track">
+                    <div id="modal-track-progress" class="audio-progress-fill"></div>
+                  </div>
+                  <span id="modal-track-time" class="audio-time tabular-nums">00:00 / 00:00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YouTube Background Music Host & Floating Darkroom Controller -->
+    <div id="yt-music-host" aria-hidden="true" class="yt-music-host"></div>
+
+    <aside id="music-player" aria-label="Background Music" class="music-player">
+      <button
+        id="music-toggle-btn"
+        type="button"
+        aria-label="Play background music"
+        class="music-toggle-btn"
+      >
+        <span id="music-toggle-icon" class="music-toggle-icon"></span>
+      </button>
+
+      <div class="music-meta">
+        <div class="music-title-row">
+          <span class="music-eq" aria-hidden="true">
+            <span class="music-eq-bar"></span>
+            <span class="music-eq-bar"></span>
+            <span class="music-eq-bar"></span>
+          </span>
+          <span id="music-title" class="music-title">FANG Audio</span>
+        </div>
+        <span id="music-status" class="music-status">Click anywhere to play</span>
+      </div>
+
+      <label class="music-volume-wrap">
+        <span class="sr-only">Music volume</span>
+        <input
+          id="music-volume"
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          value="45"
+          class="darkroom-slider music-volume-slider"
+        />
+      </label>
+    </aside>
+  </body>
+</html>
