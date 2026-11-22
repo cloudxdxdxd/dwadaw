@@ -216,6 +216,35 @@ const ROSTER = [
       inverted: false,
     },
   },
+  {
+    id: 'lavi',
+    name: 'lavi',
+    plateCode: 'PLATE 08',
+    discipline: 'archival',
+    disciplineLabel: 'Cold Storage & Tape',
+    location: 'Zurich',
+    joinedYear: '2025',
+    motif: 'vail',
+    src: 'https://media.discordapp.net/attachments/1572240532741038224/1574022267418054717/IMG_3190.jpg?ex=6b0421f8&is=6b02d078&hm=2811da0ce5551a1526ec0b5b8a7b81a31af036f74e1d7ea89e3fc854fd13ffff&format=webp&width=1024&height=1024',
+    discordId: '',
+    statement: 'i love com',
+    medium: 'Silver-halide contact print',
+    handle: '@vail.ledger',
+    sound: {
+      trackTitle: 'Vault Lock Study VIII',
+      durationSec: 232,
+      baseHz: 58.27,
+      harmonicRatio: 1.414,
+      lfoRate: 0.13,
+      texture: 'drone',
+    },
+    defaultAdjustments: {
+      contrast: 1.38,
+      grain: 0.54,
+      vignette: 0.76,
+      inverted: false,
+    },
+  },
 ];
 
 const ARCHIVE_ENTRIES = [
@@ -288,6 +317,16 @@ const ARCHIVE_ENTRIES = [
     medium: 'Contact Sheet + Metal Drone',
     year: '2024',
     duration: '04:05',
+  },
+  {
+    id: 'arc-08',
+    catalogNo: 'RC-024',
+    title: 'Vault Lock Study VIII',
+    memberId: 'vail',
+    memberName: 'vail',
+    medium: 'Silver-Halide + Sub Drone',
+    year: '2025',
+    duration: '03:52',
   },
 ];
 
@@ -1427,9 +1466,11 @@ function resetCardTilt(card3d, innerShell) {
 }
 
 const BACK_WING_OFFSETS = [-2.6, -1.75, -0.95, 0.95, 1.75, 2.6];
+const BACK_WING_OFFSETS_7 = [-3.05, -2.3, -1.58, -0.9, 0.95, 1.8, 2.65];
 
 function getWingOffsets(count) {
   if (count === BACK_WING_OFFSETS.length) return BACK_WING_OFFSETS;
+  if (count === BACK_WING_OFFSETS_7.length) return BACK_WING_OFFSETS_7;
   const result = [];
   const half = count / 2;
   for (let i = 0; i < count; i += 1) {
